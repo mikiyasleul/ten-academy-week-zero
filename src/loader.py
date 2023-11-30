@@ -8,8 +8,6 @@ from datetime import datetime
 from pick import pick
 from time import sleep
 
-
-
 # Create wrapper classes for using slack_sdk in place of slacker
 class SlackDataLoader:
     def __init__(self, path):
@@ -50,3 +48,4 @@ if __name__ == "__main__":
    
     parser.add_argument('--zip', help="Name of a zip file to import")
     args = parser.parse_args()
+

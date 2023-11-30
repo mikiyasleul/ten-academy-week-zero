@@ -11,7 +11,6 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 from nltk.corpus import stopwords
 
-
 def break_combined_weeks(combined_weeks):
 
     plus_one_week = []
