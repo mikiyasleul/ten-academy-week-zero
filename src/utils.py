@@ -11,17 +11,8 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 from nltk.corpus import stopwords
 
-
 def break_combined_weeks(combined_weeks):
-    """
-    Breaks combined weeks into separate weeks.
-    
-    Args:
-        combined_weeks: list of tuples of weeks to combine
-        
-    Returns:
-        tuple of lists of weeks to be treated as plus one and minus one
-    """
+
     plus_one_week = []
     minus_one_week = []
 
@@ -42,8 +33,6 @@ def get_msgs_df_info(df):
     links_count_dict = df.groupby("user").link_count.sum().to_dict()
     return msgs_count_dict, replies_count_dict, mentions_count_dict, links_count_dict
 
-
-
 def get_messages_dict(msgs):
     msg_list = {
             "msg_id":[],
@@ -59,7 +48,6 @@ def get_messages_dict(msgs):
             "links":[],
             "link_count":[]
             }
-
 
     for msg in msgs:
         if "subtype" not in msg:
@@ -141,10 +129,6 @@ def msgs_to_df(msgs):
     return df
 
 def process_msgs(msg):
-    '''
-    select important columns from the message
-    '''
-
     keys = ["client_msg_id", "type", "text", "user", "ts", "team", 
             "thread_ts", "reply_count", "reply_users_count"]
     msg_list = {k:msg[k] for k in keys}
@@ -153,9 +137,6 @@ def process_msgs(msg):
     return msg_list, rply_list
 
 def get_messages_from_channel(channel_path):
-    '''
-    get all the messages from a channel        
-    '''
     channel_json_files = os.listdir(channel_path)
     channel_msgs = [json.load(open(channel_path + "/" + f)) for f in channel_json_files]
 
@@ -164,12 +145,7 @@ def get_messages_from_channel(channel_path):
     
     return df
 
-
 def convert_2_timestamp(column, data):
-    """convert from unix time to readable timestamp
-        args: column: columns that needs to be converted to timestamp
-                data: data that has the specified column
-    """
     if column in data.columns.values:
         timestamp_ = []
         for time_unix in data[column]:
