@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.title('Slack Message')
-st.text('Channel Member Analysis')
+st.title('Slack Message Cohort 6')
+st.text('Channel Member Analysis on each conversastion')
 
-upload_file = st.file_uploader("Upload your file")
+upload_file = st.file_uploader("Upload your file / JSON-File")
 
 if upload_file:
     df = pd.read_json(upload_file)
